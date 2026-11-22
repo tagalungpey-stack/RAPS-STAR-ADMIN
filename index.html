@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RAPS STAR Admin</title>
+<meta name="theme-color" content="#0b0d14">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div class="masuk" id="layarMasuk">
+  <div class="kartu">
+    <div class="merek">
+      <div class="logo">RS</div>
+      <div><b>RAPS STAR Admin</b><span>panel developer</span></div>
+    </div>
+    <div style="display:grid;gap:10px;margin-top:8px">
+      <div><label>Email panel</label><input id="email" type="email" autocomplete="username" placeholder="nama@email.com"></div>
+      <div><label>Sandi</label><input id="sandi" type="password" autocomplete="current-password" placeholder="••••••••"></div>
+      <button class="tombol" id="masukEmail">Masuk</button>
+      <button class="tombol polos" id="masukGoogle">Masuk dengan Google</button>
+      <div class="pesan" id="pesanMasuk"></div>
+      <div class="redup" style="font-size:11px">Hanya akun pemilik dan admin terdaftar yang bisa memakai panel ini.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PANEL ============ -->
+<div id="layarPanel" style="display:none;width:100%;min-height:100vh">
+  <aside class="sisi" id="sisi">
+    <div class="merek">
+      <div class="logo">RS</div>
+      <div><b>RAPS STAR Panel</b><span id="emailSaya">belum masuk</span></div>
+    </div>
+    <nav id="daftarMenu" style="display:grid;gap:2px"></nav>
+    <div class="kaki">
+      <div class="saya">
+        <div class="huruf" id="hurufSaya">?</div>
+        <div style="flex:1;min-width:0">
+          <div id="namaSaya" style="color:var(--teks);font-weight:600;font-size:12px">belum masuk</div>
+          <div id="peranSaya" class="mono">–</div>
+        </div>
+        <button class="menu" id="keluar" title="Keluar" style="width:auto;padding:6px 8px">⎋</button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="utama">
+    <header class="atas">
+      <button class="buka-sisi" id="bukaSisi">☰</button>
+      <h1 id="judulHal">Dashboard</h1>
+      <span class="jam" id="jam"></span>
+    </header>
+    <div class="isi" id="isiHal"></div>
+  </main>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
