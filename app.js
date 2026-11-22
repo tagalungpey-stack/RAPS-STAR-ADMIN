@@ -48,6 +48,10 @@ const uidDari = async (nilai) => {
   const t = String(nilai || "").trim();
   if (!t) throw new Error("Isi ID user dulu");
   if (!/^\d+$/.test(t) || t.length > 20) return t;
+  try {
+    const r = await rGet(rRef(rtdb, "ids/i/" + t + "/uid"));
+    if (r.exists() && r.val()) return String(r.val());
+  } catch (e) { }
   const s = await getDoc(doc(db, "userIds", t));
   if (s.exists() && s.data().uid) return s.data().uid;
   for (const medan of ["userId", "uid"]) {
@@ -56,7 +60,7 @@ const uidDari = async (nilai) => {
   }
   const q2 = await getDocs(query(collection(db, "users"), where("userId", "==", t), limit(1)));
   if (!q2.empty) return q2.docs[0].id;
-  throw new Error("ID " + t + " tidak ditemukan");
+  throw new Error("ID " + t + " tidak ditemukan di Realtime Database maupun Firestore. Pakai UID panjang atau email akun itu.");
 };
 const namaUser = async (uid) => {
   try {
